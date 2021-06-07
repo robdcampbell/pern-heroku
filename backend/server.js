@@ -1,15 +1,23 @@
 const express = require("express");
 const app = express();
-const PORT = 5000;
 const cors = require("cors");
 const pool = require("./db");
+const path = require("path");
+const PORT = process.env.port || 5000;
 
 // Middleware
 app.use(express.json()); // allows access to req (req.body, req.params, etc...)
 app.use(cors()); // allows cross domain resource sharing - proxing between ports 3000 and 5000 here
 
-// ROUTES //
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
+//process.env.node_env  (will return production or undefined)
+if (process.env.node_env === "production") {
+  // serve static content
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+}
+
+// ROUTES //
 // Get all todos
 app.get("/todos", async (req, res) => {
   const allTodos = await pool.query("SELECT * FROM todo ORDER BY todo_id ASC");
@@ -76,7 +84,8 @@ app.delete("/todos/:id", async (req, res) => {
 
 // Test Route
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Pterodactyl" });
+  // Route Litmus Test
+  res.status(200).json({ message: "Pterodactyl Ptest" });
 });
 
 app.listen(PORT, () => {
