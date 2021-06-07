@@ -9,7 +9,7 @@ const PORT = process.env.port || 5000;
 app.use(express.json()); // allows access to req (req.body, req.params, etc...)
 app.use(cors()); // allows cross domain resource sharing - proxing between ports 3000 and 5000 here
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+// app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 //process.env.node_env  (will return production or undefined)
 if (process.env.node_env === "production") {
