@@ -8,7 +8,7 @@ const ListTodos = ({ trip, setTrip }) => {
 
   const fetchTodos = async () => {
     try {
-      const data = await fetch("http://localhost:5000/todos", {
+      const data = await fetch("/todos", {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -25,7 +25,7 @@ const ListTodos = ({ trip, setTrip }) => {
 
   const deleteTodo = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/todos/${id}`, {
+      const res = await fetch(`/todos/${id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",

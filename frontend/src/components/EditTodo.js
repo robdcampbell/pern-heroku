@@ -8,7 +8,9 @@ const EditTodo = ({ showModal, setShowModal, todo, trip, setTrip }) => {
 
     const body = { description };
 
-    await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
+    // Proxy
+
+    await fetch(`/todos/${todo.todo_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

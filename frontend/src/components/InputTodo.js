@@ -9,7 +9,7 @@ const InputTodo = ({ trip, setTrip }) => {
 
     try {
       const body = { description: description.current.value };
-      const response = await fetch("http://localhost:5000/todos", {
+      const response = await fetch("/todos", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
