@@ -89,6 +89,11 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Pterodactyl Ptest" });
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  //res.status(200).json("Where are we, my friend...");
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port:${PORT}`);
 });

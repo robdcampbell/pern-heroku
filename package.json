@@ -4,7 +4,8 @@
   "description": "PERN stack project deployable to heroku",
   "main": "index.js",
   "engines": {
-    "node": "14.15.4"
+    "node": "14.15.4",
+    "npm": "7.10.0"
   },
   "scripts": {
     "start": "node backend/server.js",
