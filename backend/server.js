@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const pool = require("./db");
 const path = require("path");
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json()); // allows access to req (req.body, req.params, etc...)
