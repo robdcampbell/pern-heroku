@@ -2,7 +2,7 @@
   "name": "pern-heroku",
   "version": "1.0.0",
   "description": "PERN stack project deployable to heroku",
-  "main": "index.js",
+  "main": "backend/server.js",
   "engines": {
     "node": "14.15.4",
     "npm": "7.10.0"
