@@ -6,13 +6,13 @@ const InputTodo = ({ trip, setTrip }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-
+    console.log(`new task added: ${description.current.value}`);
     try {
       const body = { description: description.current.value };
       const response = await fetch("/todos", {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
       });

@@ -11,7 +11,7 @@ const ListTodos = ({ trip, setTrip }) => {
       const data = await fetch("/todos", {
         method: "GET",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
       });
       const allTodos = await data.json();
@@ -28,7 +28,7 @@ const ListTodos = ({ trip, setTrip }) => {
       const res = await fetch(`/todos/${id}`, {
         method: "DELETE",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
       });
       console.log(res);
