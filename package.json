@@ -1,0 +1,19 @@
+{
+  "name": "pern-heroku",
+  "version": "1.0.0",
+  "description": "PERN stack project deployable to heroku",
+  "main": "backend/server.js",
+  "engines": {
+    "node": "14.15.4",
+    "npm": "7.10.0"
+  },
+  "scripts": {
+    "start": "node backend/server.js",
+    "heroku-postbuild": "cd backend && npm install && cd ../frontend && npm install && npm run build"
+  },
+  "author": "Rob Campbell",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
