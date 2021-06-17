@@ -13,7 +13,7 @@ app.get("/", async (req, res) => {
   res.status(200).json(allTodos.rows);
 });
 
-app.post("/create", async (req, res) => {
+app.get("/create", async (req, res) => {
   console.log("Bling Blong!");
   const allTodos = await pool.query(
     "INSERT INTO todo(description) VALUES('this is a test description') RETURNING *"
@@ -21,6 +21,15 @@ app.post("/create", async (req, res) => {
   // console.log(allTodos.rows);
 
   res.status(200).json(allTodos.rows[0]);
+});
+app.get("/delete/:id", async (req, res) => {
+  console.log(req.params.id);
+  const allTodos = await pool.query(
+    "DELETE FROM todo WHERE todo_id = 56 RETURNING *"
+  );
+  // console.log(allTodos.rows);
+
+  res.status(200).json(allTodos.rows);
 });
 
 app.listen(PORT, () => {
