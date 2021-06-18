@@ -90,6 +90,9 @@ app.get("/", (req, res) => {
   // Route Litmus Test
   res.status(200).json({ message: "Pterodactyl Ptest" });
 });
+app.get("/db-url", (req, res) => {
+  res.status(200).json(process.env.DATABASE_URL);
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
