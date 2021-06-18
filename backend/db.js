@@ -10,8 +10,9 @@ require("dotenv").config();
 // };
 
 const devConfig = {
-  connectionString: `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`,
+  connectionString: `postgres://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`,
 };
+console.log(devConfig.connectionString);
 // const proConfig = {
 //   connectionString: `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`,
 // };
@@ -20,20 +21,22 @@ const proConfig = {
   connectionString: process.env.DATABASE_URL, // coming from Heroku addons
 };
 
-const pool = new Pool(
-  process.env.NODE_ENV === "production" ? proConfig : devConfig
-);
-
-// // TEST//
-// const client = new Client(
+// const pool = new Pool(
 //   process.env.NODE_ENV === "production" ? proConfig : devConfig
 // );
-// client.connect();
-// client.query("SELECT * FROM todo", (err, res) => {
-//   // console.log(err, res.rows);
-//   client.end();
-// });
-//
 
-// module.exports = { pool, client };
+// TEST client AS POOL:
+const pool = new Client({
+  connectionString: process.env.DATABASE_URL,
+});
+
+pool.connect();
+
+pool.query("SELECT * FROM todo", (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+});
+
 module.exports = pool;
