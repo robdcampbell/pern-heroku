@@ -12,6 +12,8 @@ app.use(cors()); // allows cross domain resource sharing - proxing between ports
 //COMMENT THIS OUT!!!!!!
 //app.use(express.static(path.join(__dirname, "../frontend/build")));
 
+console.log(process.env.NODE_ENV);
+
 //process.env.node_env  (will return production or undefined)
 if (process.env.NODE_ENV === "production") {
   // serve static content
