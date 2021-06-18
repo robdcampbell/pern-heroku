@@ -85,13 +85,16 @@ app.delete("/todos/:id", async (req, res) => {
   }
 });
 
-// Test Route
+// Test Routes
 app.get("/", (req, res) => {
   // Route Litmus Test
   res.status(200).json({ message: "Pterodactyl Ptest" });
 });
 app.get("/db-url", (req, res) => {
   res.status(200).json(process.env.DATABASE_URL);
+});
+app.get("/node-env", (req, res) => {
+  res.status(200).json(process.env.NODE_ENV);
 });
 
 app.get("*", (req, res) => {
